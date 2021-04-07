@@ -5,9 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "11.1"
+          directory: ${{ runner.temp }}/llvm
       - uses: seanmiddleditch/gha-setup-ninja@v3
-      - run: bazel build -c opt :decoder_main
       - run: bazel build -c opt :encoder_main
+      - run: bazel build -c opt :decoder_main
       - run: bazel-bin/encoder_main --model_path=wavegru --output_dir=$HOME/temp --input_path=testdata/16khz_sample_000001.wav
       - run: bazel-bin/decoder_main --model_path=wavegru --output_dir=$HOME/temp/ --encoded_path=$HOME/temp/16khz_sample_000001.lyra
 
@@ -16,8 +20,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: seanmiddleditch/gha-setup-ninja@v3
-      - run: bazel build -c opt :decoder_main --config=android_arm64
       - run: bazel build -c opt :encoder_main --config=android_arm64
+      - run: bazel build -c opt :decoder_main --config=android_arm64
 
   android-app:
     runs-on: ubuntu-latest
