@@ -37,7 +37,7 @@ protobuf_deps()
 git_repository(
     name = "com_google_absl",
     remote = "https://github.com/abseil/abseil-cpp.git",
-    branch = "lts_2020_09_23",
+    branch = "lts_2021_03_24",
 )
 
 # Filesystem
