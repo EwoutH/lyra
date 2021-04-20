@@ -3,6 +3,8 @@ on: [push, pull_request]
 jobs:
   android-bin:
     runs-on: ubuntu-latest
+    env:
+      ANDROID_NDK_HOME: $ANDROID_NDK_LATEST_HOME
     steps:
       - uses: actions/checkout@v2
       - run: bazel build -c opt :encoder_main --config=android_arm64
@@ -10,6 +12,8 @@ jobs:
 
   android-app:
     runs-on: ubuntu-latest
+    env:
+      ANDROID_NDK_HOME: $ANDROID_NDK_LATEST_HOME
     steps:
       - uses: actions/checkout@v2
       - name: Build Android app
