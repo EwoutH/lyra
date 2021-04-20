@@ -3,18 +3,18 @@ on: [push, pull_request]
 jobs:
   android-bin:
     runs-on: ubuntu-latest
-    env:
-      ANDROID_NDK_HOME: $ANDROID_NDK_LATEST_HOME
     steps:
       - uses: actions/checkout@v2
+      - name: Set NDK path
+        run: echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
       - run: bazel build -c opt :encoder_main --config=android_arm64
       - run: bazel build -c opt :decoder_main --config=android_arm64
 
   android-app:
     runs-on: ubuntu-latest
-    env:
-      ANDROID_NDK_HOME: $ANDROID_NDK_LATEST_HOME
     steps:
       - uses: actions/checkout@v2
+      - name: Set NDK path
+        run: echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
       - name: Build Android app
         run: bazel build android_example:lyra_android_example --config=android_arm64 --copt=-DBENCHMARK
