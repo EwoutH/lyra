@@ -17,7 +17,7 @@ jobs:
       - name: Build Android App
         shell: bash
         run: |
-          export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/21.4.7075529"
+          export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/25.1.8937393"
           bazel build android_example:lyra_android_example --config=android_arm64 --copt=-DBENCHMARK
       - name: Copy artifacts
         shell: bash

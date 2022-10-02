@@ -72,16 +72,16 @@ right version of the NDK.
     which path was installed) to your $HOME/.bashrc and reload it with `source
     $HOME/.bashrc`.
 
-4.  Install the r21 ndk, android sdk 30, and build tools:
+4.  Install the r25 ndk, android sdk 33, and build tools:
 
     ```shell
-    bin/sdkmanager  --sdk_root=$HOME/android/sdk --install  "platforms;android-30" "build-tools;30.0.3" "ndk;21.4.7075529"
+    bin/sdkmanager  --sdk_root=$HOME/android/sdk --install  "platforms;android-33" "build-tools;33.0.0" "ndk;25.1.8937393"
     ```
 
 5.  Add the following to .bashrc (or export the variables)
 
     ```shell
-    export ANDROID_NDK_HOME=$HOME/android/sdk/ndk/21.4.7075529
+    export ANDROID_NDK_HOME=$HOME/android/sdk/ndk/25.1.8937393
     export ANDROID_HOME=$HOME/android/sdk
     ```
 

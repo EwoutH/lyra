@@ -19,11 +19,11 @@ runs:
   steps:
     - shell: bash
       run: |
-        export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/21.4.7075529"
+        export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/25.1.8937393"
         bazel build -c opt :encoder_main ${{ inputs.build-options }}
     - shell: bash
       run: |
-        export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/21.4.7075529"
+        export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/25.1.8937393"
         bazel build -c opt :decoder_main ${{ inputs.build-options }}
     - shell: bash
       run: |
